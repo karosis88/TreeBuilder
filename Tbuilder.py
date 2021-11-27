@@ -44,7 +44,7 @@ class BaseTrees:
                 matrix[x][y] = str(root.val)
                 solve(root.childs[0],x+1,y-2**(depth-x-1))
                 solve(root.childs[1],x+1,y+2**(depth-x-1))
-        
+            
         finalTree = ""
         
         finddepth(root,0)
@@ -66,8 +66,9 @@ class BaseTrees:
             nd = queue.popleft()
             i = 0
             while i < self.node.childnodes and i < len(template):
-                nd.childs[i] = Node(template[i], self.node.childnodes)
-                queue.append(nd.childs[i])
+                if template[i] != None:
+                    nd.childs[i] = Node(template[i], self.node.childnodes)
+                    queue.append(nd.childs[i])
                 i+=1
             template = template[i:]
         return self.node
@@ -135,11 +136,9 @@ class BSTree(BaseTrees):
         insert(self.node)
         return self
 
-
-
 if __name__ == '__main__':
     btr = BSTree(2)
-    btr.buildfromtamplate([4,2,7,1,3])
-    
-    
-    
+    btr.buildfromtamplate([2, None, 3, 4, 5, None, None, None, 5, None, 6])
+    print(btr)
+
+input()
