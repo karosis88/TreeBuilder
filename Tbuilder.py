@@ -124,7 +124,7 @@ class BSTree(BaseTrees):
         def insert(node):
             if not node:
                 return True
-            if value > node.val:
+            if value >= node.val:
                 l = insert(node.childs[1])
             else:
                 l = insert(node.childs[0])
